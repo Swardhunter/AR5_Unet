@@ -27,4 +27,26 @@ After preparing and augmenting our dataset, we proceeded to train our convolutio
 
 1. **Number of Epochs:** The model was trained for 100 epochs. 
 
-2. **Loss Function:** We used the Cross-Entropy Loss function to train the model. T
+2. **Loss Function:** We used the Cross-Entropy Loss function to train the model.
+
+## Model Inference 
+
+## Quick Start Guide
+
+### Step 1: Download the Model Checkpoint
+Download the trained model checkpoint from our Hugging Face repository to use for predictions:
+- [Hugging Face Model Repository](https://huggingface.co/Swardhunter/UNET_VGG199/tree/main)
+
+### Step 2: Set Up Your Environment
+1. **Install Required Libraries:**
+   - Ensure you have Python and pip installed on your system. Then, install the required libraries listed in the `requirements.txt` file using pip:
+     ```sh
+     pip install -r requirements.txt
+     ```
+
+2. **Use the Prediction Notebook:**
+   - Open and run the `Prediction.ipynb` notebook from the repository for easy model predictions. Make sure Jupyter Notebook is installed:
+     ```sh
+     pip install notebook
+     ```
+   - Launch Jupyter Notebook and navigate to `Prediction.ipynb` to start making predictions.
