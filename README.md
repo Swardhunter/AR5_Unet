@@ -1,16 +1,30 @@
-# AR5_Unet
+# Implemmentation of Deep learning framework for land classification of high-resolution aerial images using torch lightning 
+
+
 ## Overview
 
-This repository is dedicated to the development and fine-tuning of a Convolutional Neural Network (CNN) employing a U-Net architecture enhanced with a VGG-19 encoder. Our primary focus is on the application of this advanced machine learning model to classify land areas suitable for onshore wind farms, utilizing the comprehensive AR5/FKB database.
+This repository is done for fine-tuning a CNN employing U-Net architecture with VGG-19 encoder to classify the aerial images of the Norwegian onshore wind farms pre and post-development and quantify their direct occupation.
 
-## Objectives
+## Data 
 
-This project aims to leverage the power of Convolutional Neural Networks (CNNs) with a focus on the U-Net architecture, enhanced by a VGG-19 encoder, for the purpose of land classification. Specifically, we are targeting land suitable for onshore wind farm development, utilizing the AR5/FKB database. Our objectives include:
+The training data was acquired from the aerial images from the Norwegian aerial image portal (Norge i Bilder). Label data were acquired from the AR5/FKB dataset by the Norwegian Institute of Bioeconomy Research (NIBIO, 2023).
 
-- **Land Classification for Onshore Wind:** To apply the CNN model for the accurate identification and classification of land areas that have the potential for onshore wind energy development. This contributes towards the broader goal of enhancing sustainable energy resources.
+## Data Preparation 
+To prepare the training data for our model, we employed the following preprocessing steps using GDAL:
 
-- **U-Net with VGG-19 Encoder:** To utilize the U-Net architecture, known for its efficiency in image segmentation tasks, in combination with the VGG-19 encoder for robust feature extraction. This synergy aims to improve the model's accuracy and processing efficiency in classifying complex land surfaces.
+1. **Selection of Areas:** We selected 4 random areas in Norway where the labels in the AR5/FKB dataset match the input from aerial images obtained from Norge i Bilder. This ensures that our model trains on accurately matched data for land use classification.
 
-- **Dataset Utilization:** To effectively train and fine-tune our model using the AR5/FKB database, ensuring it can recognize and classify various land characteristics that are pertinent to the placement and development of onshore wind farms.
+2. **Image Preprocessing:** The aerial images were then preprocessed by:
+   - **Clipping:** Extracting the relevant sections from the larger images that correspond to the selected areas.
+   - **Cutting into Patches:** Dividing the clipped images into smaller patches of size 512x512 pixels. This step is crucial for managing the computational load and improving the efficiency of our CNN model during training.
+  
+3. **Data Augmentation:** To enhance the robustness of our model and increase the diversity of our training dataset, we performed data augmentation on the preprocessed patches. This was achieved by:
+   - **Rotation:** Rotating the patches by 90 degrees. This step introduces variability in the dataset, simulating different orientations that the model might encounter, thus improving its generalization capabilities.
 
-These objectives guide the project's direction and ensure a focused approach towards harnessing machine learning for environmental and energy sustainability.
+## Model Training
+
+After preparing and augmenting our dataset, we proceeded to train our convolutional neural network model. Here's an overview of the training process:
+
+1. **Number of Epochs:** The model was trained for 100 epochs. 
+
+2. **Loss Function:** We used the Cross-Entropy Loss function to train the model. T
